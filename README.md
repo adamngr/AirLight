@@ -14,7 +14,7 @@ Pour lancer le script :
 Le seul chemin pour que le script s'éxécute correctement à l'heure actuelle est : 
 
     /home/$USER/scripts/airlight 
-    
+
 ; avec les dossiers scripts et airlight ajoutés au $PATH :
     
     echo $PATH
