@@ -14,7 +14,7 @@ Pour télécharger et rendre executable le script :
     $ wget -P $HOME https://github.com/adamngr/AirLight/archive/master.zip
     $ unzip master.zip -d ~
     $ cd AirLight-master
-    $ chmod +x AirLight
+    $ chmod +x airlight
     $ mkdir logs && mkdir dic
 
 Le seul chemin pour que le script s'éxécute correctement à l'heure actuelle est : 
