@@ -1,6 +1,6 @@
 # AirLight
 
-Ce script a pour but de reunir les commandes consacrés aux tests de sécurité des réseaux WIFI par le biais de la suite aircrack-ng. 
+Ce script a pour but de reunir les commandes consacrés aux tests de sécurité des réseaux WIFI WPA/WPA2 par le biais de la suite aircrack-ng. 
 
 <b> ChangeLog : </b>
 
