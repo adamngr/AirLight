@@ -2,10 +2,12 @@
 
 Ce script a pour but de reunir les commandes consacrés aux tests des réseaux WIFI par le biais la suite aircrack-ng. 
 
+    v1 : Attaque par Déauthentification 
+
 Pour lancer le script :
 
-  $ chmod +x clean
-  $ ./airlight
+    $ chmod +x clean
+    $ ./airlight
 
 <p align="center">
   <img src="https://image.noelshack.com/fichiers/2018/25/1/1529323468-capture-du-2018-06-18-14-03-44.png">
