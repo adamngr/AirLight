@@ -6,20 +6,21 @@ Ce script a pour but de reunir les commandes consacrés aux tests des réseaux W
 
     v0.1 : Attaque par Déauthentification 
 
-Pour lancer le script :
+Pour lancer télécharger et rendre executable le script :
 
-    $ chmod +x airlight
-    $ airlight
+    $ wget -P $HOME https://github.com/adamngr/AirLight/archive/master.zip
+    $ unzip master.zip -d ~
+    $ cd AirLight-master
+    $ chmod +x AirLight
 
 Le seul chemin pour que le script s'éxécute correctement à l'heure actuelle est : 
 
-    /home/$USER/scripts/airlight 
+    /home/$USER/AirLight-master 
 
-; avec les dossiers scripts et airlight ajoutés au $PATH :
+; avec le dossiers AirLight-master ajoutés au $PATH :
     
-    echo $PATH
-    echo 'export PATH=$PATH:/home/$USER/scripts' >> /home/$USER/.bashrc
-    echo 'export PATH=$PATH:/home/$USER/scripts/airlight' >> /home/$USER/.bashrc
+    $ echo $PATH
+    $ echo 'export PATH=$PATH:/home/$USER/AirLight-master' >> /home/$USER/.bashrc
 
 <p align="center">
   <img src="https://image.noelshack.com/fichiers/2018/25/1/1529323468-capture-du-2018-06-18-14-03-44.png">
