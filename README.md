@@ -4,7 +4,10 @@ Ce script a pour but de reunir les commandes consacrés aux tests des réseaux W
 
 <b> ChangeLog : </b>
 
-    v0.1 : Attaque par Déauthentification 
+    v0.1 : Attaque par Déauthentification <b> ChangeLog : </b>
+    
+
+<b> Installation : </b>
 
 Pour lancer télécharger et rendre executable le script :
 
@@ -21,6 +24,10 @@ Le seul chemin pour que le script s'éxécute correctement à l'heure actuelle e
     
     $ echo $PATH
     $ echo 'export PATH=$PATH:/home/$USER/AirLight-master' >> /home/$USER/.bashrc
+    
+pour pourvoir ensuite l'executer directement :
+
+    $ airlight
 
 <p align="center">
   <img src="https://image.noelshack.com/fichiers/2018/25/1/1529323468-capture-du-2018-06-18-14-03-44.png">
