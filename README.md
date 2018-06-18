@@ -2,20 +2,24 @@
 
 Ce script a pour but de reunir les commandes consacrés aux tests des réseaux WIFI par le biais de la suite aircrack-ng. 
 
-ChangeLog :
+<b> ChangeLog : </b>
 
     v0.1 : Attaque par Déauthentification 
-
-Le bon chemin pour que le script s'éxécute correctement est /home/$USER/scripts/airlight avec les dossiers scripts et airlight ajoutés au $PATH.
-    
-    echo $PATH
-    echo 'export PATH=$PATH:/home/$USER/scripts' >> /home/$USER/.bashrc
-    echo 'export PATH=$PATH:/home/$USER/scripts/airlight' >> /home/$USER/.bashrc
 
 Pour lancer le script :
 
     $ chmod +x airlight
     $ airlight
+
+Le seul chemin pour que le script s'éxécute correctement à l'heure actuelle est : 
+
+    /home/$USER/scripts/airlight 
+    
+; avec les dossiers scripts et airlight ajoutés au $PATH :
+    
+    echo $PATH
+    echo 'export PATH=$PATH:/home/$USER/scripts' >> /home/$USER/.bashrc
+    echo 'export PATH=$PATH:/home/$USER/scripts/airlight' >> /home/$USER/.bashrc
 
 <p align="center">
   <img src="https://image.noelshack.com/fichiers/2018/25/1/1529323468-capture-du-2018-06-18-14-03-44.png">
