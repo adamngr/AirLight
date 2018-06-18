@@ -1,6 +1,6 @@
 # AirLight
 
-Ce script a pour but de reunir les commandes consacrés aux tests des réseaux WIFI par le biais la suite aircrack-ng. 
+Ce script a pour but de reunir les commandes consacrés aux tests des réseaux WIFI par le biais de la suite aircrack-ng. 
 
     v1 : Attaque par Déauthentification 
 
