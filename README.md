@@ -1,6 +1,6 @@
 # AirLight
 
-Ce script a pour but de reunir les commandes consacrés aux tests des réseaux WIFI par le biais de la suite aircrack-ng. 
+Ce script a pour but de reunir les commandes consacrés aux tests de sécurité des réseaux WIFI par le biais de la suite aircrack-ng. 
 
 <b> ChangeLog : </b>
 
@@ -9,7 +9,7 @@ Ce script a pour but de reunir les commandes consacrés aux tests des réseaux W
 
 <b> Installation : </b>
 
-Pour lancer télécharger et rendre executable le script :
+Pour télécharger et rendre executable le script :
 
     $ wget -P $HOME https://github.com/adamngr/AirLight/archive/master.zip
     $ unzip master.zip -d ~
@@ -20,7 +20,7 @@ Le seul chemin pour que le script s'éxécute correctement à l'heure actuelle e
 
     /home/$USER/AirLight-master 
 
-; avec le dossiers AirLight-master ajoutés au $PATH :
+On peut ajouter le AirLight-master au $PATH :
     
     $ echo $PATH
     $ echo 'export PATH=$PATH:/home/$USER/AirLight-master' >> /home/$USER/.bashrc
