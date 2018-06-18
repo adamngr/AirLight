@@ -4,7 +4,7 @@ Ce script a pour but de reunir les commandes consacrés aux tests de sécurité 
 
 <b> ChangeLog : </b>
 
-    v0.1 : Attaque par Déauthentification <b> ChangeLog : </b>
+    v0.1 : Attaque par Déauthentification
     
 
 <b> Installation : </b>
