@@ -11,10 +11,10 @@ Ce script a pour but de reunir les commandes consacrés aux tests de sécurité 
 
 Pour télécharger et rendre executable le script :
 
-    $ wget -P $HOME https://github.com/adamngr/AirLight/archive/master.zip
+    $ wget -P $HOME https://github.com/adann0/AirLight/archive/master.zip
     $ unzip master.zip -d ~
     $ cd AirLight-master
-    $ chmod +x airlight
+    $ chmod +x airlight && chmod +x airlightdeauth
     $ mkdir logs && mkdir dic
 
 Le seul chemin pour que le script s'éxécute correctement à l'heure actuelle est : 
@@ -31,7 +31,7 @@ pour pourvoir ensuite l'executer directement :
     $ airlight
 
 <p align="center">
-  <img src="https://image.noelshack.com/fichiers/2018/25/1/1529323468-capture-du-2018-06-18-14-03-44.png">
+  <img src="http://image.noelshack.com/fichiers/2018/25/1/1529356089-capture-du-2018-06-18-23-07-54.png">
 </p>
 
 Pour plus de détails :
