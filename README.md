@@ -15,6 +15,7 @@ Pour télécharger et rendre executable le script :
     $ unzip master.zip -d ~
     $ cd AirLight-master
     $ chmod +x AirLight
+    $ mkdir logs && mkdir dic
 
 Le seul chemin pour que le script s'éxécute correctement à l'heure actuelle est : 
 
