@@ -6,7 +6,7 @@ Ce script a pour but de reunir les commandes consacrés aux tests des réseaux W
 
 Pour lancer le script :
 
-    $ chmod +x clean
+    $ chmod +x airlight
     $ ./airlight
 
 <p align="center">
