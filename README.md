@@ -33,6 +33,8 @@ pour pourvoir ensuite l'executer directement :
   <img src="https://image.noelshack.com/fichiers/2018/25/1/1529323468-capture-du-2018-06-18-14-03-44.png">
 </p>
 
+L'installation de aircrack-ng et macchanger peuvent être effectués à l'aide du script.
+
 Pour plus de détails :
 
     https://aircrack-ng.org/
